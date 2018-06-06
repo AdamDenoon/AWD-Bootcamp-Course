@@ -1,0 +1,126 @@
+body {
+  background-color: #fce04b;
+  font-family: Lato;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 300;
+}
+
+#btn1:active {
+  background-color: purple;
+}
+
+#btn2:hover {
+  background-color: green;
+}
+
+#btn3:focus {
+  background-color: orange;
+}
+
+.btn {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  display: block;
+  position: relative;
+  background-color: #fcad26;
+  font-size: 16px;
+  font-weight: 300px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 25px 80px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 6px #efa424;
+}
+
+.btn:hover {
+  box-shadow: 0 4px #efa424;
+  top: 2px;
+}
+
+.btn:active {
+  box-shadow: none;
+  top: 6px;
+}
+
+/*
+* ====================================================
+* PASTE BELOW CODE INTO MAIN CSS FILE TO INSTALL NOTICE
+* ====================================================
+*/
+
+.faded-bg {
+  z-index: 9998;
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  margin: -15px;
+  opacity: 0;
+  background-color: #777;
+  transition: opacity 0.5s ease-out;
+}
+
+.notice .faded-bg {
+  opacity: 0.5;
+  transition: opacity 0.5s ease-in;
+}
+
+.modal {
+  z-index: 9999;
+  background-color: #fefefe;
+  color: #333;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 50%;
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.5s ease-in;
+  transform: translateY(200%);
+}
+
+.notice .modal {
+  transform: translateY(50%);
+  opacity: 1;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s, opacity 0.2s ease-out 0.5s;
+}
+
+.modal h1 {
+  text-align: center;
+}
+
+.modal p {
+  padding: 20;
+}
+
+.modal button {
+  outline: none;
+  border: none;
+  display: block;
+  position: relative;
+  border-radius: 25px;
+  margin: 0 auto 20px;
+  padding: 15px 35px;
+  background-color: #3EA6AB;
+  color: white;
+  font-size: 16px;
+  font-weight: 300px;
+}
+
+.modal button:hover {
+  transform: scale(1.1);
+  box-shadow: -8px 8px 18px -3px rgba(0,0,0,0.2);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              box-shadow 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/*
+* ====================================================
+* END NOTICE
+* ====================================================
+*/

@@ -1,0 +1,43 @@
+version: "2"
+services:
+  front:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./frontend/:/home/node/app
+    expose:
+      - "8080"
+    ports:
+      - "80:8080"
+    command: "node index.js"
+    links:
+      - back
+    restart: always
+  back:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./backend/:/home/node/app
+    expose:
+      - "8081"
+    ports:
+      - "8080:8081"
+    command: "node index.js"
+    links:
+      - mongo
+    restart: always
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodata:

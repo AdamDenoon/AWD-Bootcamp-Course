@@ -1,0 +1,20 @@
+FROM alpine as intermediate
+
+ARG SSH_PRIVATE_KEY
+
+RUN apk update && apk upgrade && \
+apk add --no-cache bash git openssh
+
+RUN mkdir /root/.ssh/ && chmod 700 /root/.ssh
+RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+RUN touch /root/.ssh/known_hosts && ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+RUN git clone git@github.com:decodico/todos_singlepage
+
+FROM node:8
+
+WORKDIR /home/node/app
+
+COPY --from=intermediate /todos_singlepage .
+
+RUN npm install

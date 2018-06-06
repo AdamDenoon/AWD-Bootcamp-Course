@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<style>
+		span {
+			color: green;
+		}
+	</style>
+	<h1>Bitcoin Current Price is: <span id="price"></span></h1>
+	<form id="currencies"></form>
+	<button id="btn">Refresh Data</button>
+	<script>
+		var btn = document.querySelector("#btn");
+		var span = document.querySelector("#price");
+		var form = document.querySelector("#currencies");
+		var currency = "USD";
+
+		btn.addEventListener("click", function() {
+			refreshData();
+		});
+
+		form.addEventListener("input", function(e) {
+			currency = e.target.value;
+			refreshData();
+		});
+
+		var refreshData = function() {
+
+			var XHR = new XMLHttpRequest();
+
+			XHR.onreadystatechange = function() {
+				if (XHR.readyState == 4 && XHR.status == 200) {
+					var JSONresponse = JSON.parse(XHR.responseText);
+					span.textContent = JSONresponse.bpi[currency].rate + " " + JSONresponse.bpi[currency].code;
+					var buildOptions = "";
+					Object.keys(JSONresponse.bpi).forEach(function(item) {
+						var code = JSONresponse.bpi[item].code; 
+						buildOptions += '<input type="radio" id="rdo' + code + '" name="currency" value="' + code + '"' + (currency === code ? " checked" : "") + '><label for="rdo' + code + '">' + code + '</label>';
+					});
+					form.innerHTML = buildOptions;
+				}
+			}
+
+			XHR.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json");
+			XHR.send();
+		}
+
+		refreshData();
+
+		setInterval(refreshData, 30000);
+	</script>
+</body>
+</html>

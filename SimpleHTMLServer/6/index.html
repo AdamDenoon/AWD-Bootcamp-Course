@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		function forEach(arr, callback) {
+			for (var i=0; i < arr.length; i++) {
+				callback(arr[i], i, arr);
+			}
+		}
+
+		function findIndex(arr, callback) {
+ 			for (var i=0; i < arr.length; i++) {
+				if (callback(arr[i], i, arr)) {
+            		return i;
+        		}
+    		}
+    		return -1;
+		}
+
+		function countDown(num) {
+			intervalID = setInterval(function() {
+				num--;
+				if (num == 0) {
+					console.log("Ring! Ring! Ring!");
+					clearInterval(intervalID);
+				} else {
+					console.log("Timer: ", num);
+				}
+			}, 1000);
+		}
+
+		countDown(3);
+	</script>
+</body>
+</html>
