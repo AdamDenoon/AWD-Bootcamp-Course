@@ -9,7 +9,6 @@ $(document).ready(() => {
 					$.getJSON(`https://api.github.com/users/${arg}`)
 						.then(data => {
 							let {name,followers} = data;
-							//resolve({data.name, data.followers});
 							resolve({name, followers});
 						})
 						.catch(err => reject(err));
@@ -18,7 +17,6 @@ $(document).ready(() => {
 			const pAll = Promise.all(promises).then(users => {
 				users.sort(sortByFollowers);
 				const topUser = users[0];
-				//console.log(`users == ${JSON.stringify(users)}`);
 				resolve(`${topUser.name} has the most followers with ${topUser.followers}`);
 			}).catch(err => reject(err));
 		});
