@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #ecf0f1;
+}
+
+section h3 {
+  margin: 15px 0 15px 75px;
+  font-weight: normal;
+}
