@@ -48,7 +48,7 @@ class App extends Component {
       /* One box at a time */
       const boxes = this.state.boxes.slice();
       const randIdx = Math.floor(Math.random() * this.state.boxes.length);
-      boxes[randIdx] = Object.assign({}, boxes[randIdx]);
+      //boxes[randIdx] = Object.assign({}, boxes[randIdx]); // Unnecessary... Strings are included in shallow clone
       boxes[randIdx].color = getRandomColor();
 
       this.setState({boxes});
