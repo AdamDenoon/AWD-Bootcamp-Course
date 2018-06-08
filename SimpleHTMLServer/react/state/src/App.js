@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import StatelessInstructorItem from './StatelessInstructorItem'
 
 class App extends Component {
   constructor(props) {
@@ -62,10 +63,7 @@ class App extends Component {
   }
   render() {
     const instructors = this.state.instructors.map((instructor, index) => (
-      <li key={index}>
-        <h3>{instructor.name}</h3>
-        <h4>Hobbies: {instructor.hobbies.join(", ")}</h4>
-      </li>
+      <StatelessInstructorItem key={index} {...instructor} />
     ));
     return (
       <div className="App">
