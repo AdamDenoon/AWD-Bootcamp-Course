@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const TodoList = (props) => {
-    const todos = props.todos.map((todo,i) => <li key={i}>{todo}</li>);
+const TodoList = ({todos}) => {
+    const todoItems = todos.map((todo,i) => <li key={i}>{todo}</li>);
     return (
       <ol>
-        {todos}
+        {todoItems}
       </ol>
     );
 }
