@@ -29,14 +29,40 @@ class RecipeApp extends Component {
         instructions: "Toast bread. Slice avocado and spread on bread. Add salt, oil, and pepper to taste.",
         img: "avocadotoast.jpg"
       }],
-      nextRecipeId: 4
+      nextRecipeId: 3,
+      showForm: false
     }
+    this.handleSave = this.handleSave.bind(this)
+    this.toggleForm = this.toggleForm.bind(this)
+    this.onDelete = this.onDelete.bind(this)
   }
+
+  handleSave(recipe) {
+    this.setState((prevState, props) => {
+      const newRecipe = {...recipe, id: this.state.nextRecipeId};
+      return {
+        nextRecipeId: prevState.nextRecipeId + 1,
+        recipes: [...this.state.recipes, newRecipe],
+        showForm: false
+      }
+    })
+  }
+
+  toggleForm() {
+    this.setState((prevState, props) => ({showForm: !prevState.showForm}))
+  }
+
+  onDelete(id) {
+    const recipes = this.state.recipes.filter((recipe) => (recipe.id !== id))
+    this.setState({recipes})
+  }
+
   render() {
     const navItems = [
       {
         text: "New Recipe",
-        url: "#"
+        url: "#",
+        callback: this.toggleForm
       },
       {
         text: "Home",
@@ -53,11 +79,11 @@ class RecipeApp extends Component {
     ]
     return (
       <div>
-        <Nav title="Recipe App" items={navItems}/>
+        <Nav title="Recipe App" items={navItems} onNewRecipe={this.toggleForm} />
         <section>
           <h3>Featured Recipes</h3>
-          <RecipeInput />
-          <RecipeList recipes={this.state.recipes}/>
+          {this.state.showForm ? <RecipeInput onSave={this.handleSave} onClose={this.toggleForm} /> : null }
+          <RecipeList recipes={this.state.recipes} onDelete={this.onDelete} />
         </section>
       </div>
     );
