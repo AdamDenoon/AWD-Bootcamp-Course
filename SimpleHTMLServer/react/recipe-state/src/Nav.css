@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2d3d4e;
+}
+
+nav h2 {
+  padding-left: 15px;
+  color: #eeeeee;
+  font-weight: normal;
+}
+
+nav .nav-item-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav .nav-item-list .nav-item {
+  padding: 15px;
+}
+
+nav .nav-item-list .nav-item a {
+  color: #eeeeee;
+  text-decoration: none;
+}

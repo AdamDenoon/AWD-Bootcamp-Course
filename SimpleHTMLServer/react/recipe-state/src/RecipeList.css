@@ -1,0 +1,25 @@
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 1300px) {
+  .recipe-list {
+    justify-content: space-between;
+  }
+
+  .recipe-list .recipe-card {
+    width: 31%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .recipe-list {
+    flex-direction: column;
+  }
+
+  .recipe-list .recipe-card {
+    width: 100%;
+  }
+}
