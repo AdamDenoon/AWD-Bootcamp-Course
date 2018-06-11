@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './RecipeApp.css';
 import Nav from './Nav'
+import RecipeInput from './RecipeInput'
 import RecipeList from './RecipeList'
 
 class RecipeApp extends Component {
@@ -55,6 +56,7 @@ class RecipeApp extends Component {
         <Nav title="Recipe App" items={navItems}/>
         <section>
           <h3>Featured Recipes</h3>
+          <RecipeInput />
           <RecipeList recipes={this.state.recipes}/>
         </section>
       </div>
