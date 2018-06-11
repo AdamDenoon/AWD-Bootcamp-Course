@@ -25,11 +25,12 @@ class App extends Component {
     this.setState({todos, inputText: ''})
   }
   render() {
+    const {inputText} = this.state // Destructure state object for input (for ease of coding)
     return (
       <div className="App">
         <h1>Simple Todo App</h1>
         <form onSubmit={this.submitForm}>
-          <input name="inputText" type="text" value={this.state.inputText} onChange={(e) => this.setState({[e.target.name]: e.target.value})} />
+          <input name="inputText" type="text" value={inputText} onChange={(e) => this.setState({[e.target.name]: e.target.value})} />
           <button type="submit">Submit!</button>
         </form>
         <TodoList todos={this.state.todos} />
