@@ -1,0 +1,8 @@
+.box {
+  border-radius: 15px;
+  border: 6px solid #7f7e81;
+  margin: 15px;
+  height: 170px;
+  flex-basis: 170px;
+  transition: background 300ms ease-out;
+}
