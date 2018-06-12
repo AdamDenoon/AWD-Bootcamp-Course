@@ -1,0 +1,23 @@
+#quiz-container {
+  width: 60vw;
+}
+
+.choice-list {
+  display: flex;
+  margin: 25px;
+  width: 60vw;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.quiz-choice {
+  flex-basis: 25vw;
+  *text-align: left;
+  margin: 10px 0 10px;
+}
+
+#quiz-container img {
+  height: auto;
+  width: 60vw;
+  margin-top: 25px;
+}
