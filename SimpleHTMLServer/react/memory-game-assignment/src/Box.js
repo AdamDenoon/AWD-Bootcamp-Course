@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import './Box.css';
+import PropTypes from 'prop-types'
 
 class Box extends Component {
   static defaultProps = {
     colorShowing: false,
     onCheck() {}
+  }
+  static propTypes = {
+    id: PropTypes.number,
+    colorShowing: PropTypes.bool,
+    color: PropTypes.string
   }
   constructor(props) {
     super(props)
