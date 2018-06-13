@@ -4,7 +4,7 @@
 
 .choice-list {
   display: flex;
-  margin: 25px;
+  margin: 25px 0 0;
   width: 60vw;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -12,12 +12,40 @@
 
 .quiz-choice {
   flex-basis: 25vw;
-  *text-align: left;
   margin: 10px 0 10px;
 }
 
 #quiz-container img {
   height: auto;
-  width: 60vw;
+  width: 30vw;
   margin-top: 25px;
+  box-shadow: 24px 10px 114px -68px rgba(0,0,0,0.75);
+}
+
+#quiz-container .button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quiz-container button {
+  width: 15vw;
+  padding:10px;
+  margin-bottom: 20px;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+#quiz-container button[type="submit"] {
+  background: green;
+}
+
+#quiz-container button[type="button"] {
+  background: #4444ee;
+}
+
+#quiz-container p {
+  height: 15px;
 }
