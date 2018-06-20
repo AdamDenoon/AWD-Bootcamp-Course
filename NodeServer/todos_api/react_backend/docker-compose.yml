@@ -1,0 +1,27 @@
+version: "2"
+services:
+  todos_backend:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - "3001"
+    ports:
+      - "8080:3001"
+    command: "node index.js"
+    links:
+      - mongo
+    restart: always
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/todos-backend-data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodata:
