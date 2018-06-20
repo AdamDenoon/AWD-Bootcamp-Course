@@ -24,7 +24,7 @@ rootReducer = (state=initialState,action) => {
 	return state
 }
 
-var store = Redux.createStore(rootReducer)
+var store = Redux.createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 $(document).ready(() => {
 	$('ul').on("click", "button", (e) => {
