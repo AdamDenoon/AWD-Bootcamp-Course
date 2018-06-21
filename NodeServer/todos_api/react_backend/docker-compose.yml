@@ -19,7 +19,7 @@ services:
   mongo:
     image: mongo
     volumes:
-      - mongodata:/todos-backend-data/db
+      - mongodata:/data/db
     ports:
       - "27017:27017"
 

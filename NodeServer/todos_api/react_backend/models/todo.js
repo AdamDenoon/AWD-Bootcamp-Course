@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://mongo/todos-backend-data")
+mongoose.connect("mongodb://mongo/data")
 mongoose.set('debug', true);
 mongoose.Promise = Promise;
 
