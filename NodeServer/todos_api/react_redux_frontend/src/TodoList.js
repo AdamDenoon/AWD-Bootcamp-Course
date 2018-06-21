@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Todo from './Todo'
 import NewTodoForm from './NewTodoForm'
 import { connect } from "react-redux"
-import { addTodo, removeTodo } from "./actionCreators"
+import { getTodos, addTodo, removeTodo } from "./actionCreators"
 import { Route } from 'react-router-dom'
 
 class TodoList extends Component {
@@ -18,8 +18,13 @@ class TodoList extends Component {
   removeTodo(id) {
     this.props.removeTodo(id)
   }
+
+  componentDidMount() {
+    this.props.getTodos()
+  }
+
   render() {
-    const todos = this.props.todos.map(todo => <Todo removeTodo={this.removeTodo.bind(this, todo.id)} task={todo.task} key={todo.id}/>)
+    const todos = this.props.todos.map(todo => <Todo removeTodo={this.removeTodo.bind(this, todo._id)} task={todo.task} key={todo._id}/>)
     return (
       <div>
         <Route path="/todos/new" component={props => (
@@ -33,4 +38,4 @@ class TodoList extends Component {
 
 const mapStateToProps = (reduxState) => ({ todos: reduxState.todos })
 
-export default connect(mapStateToProps, {addTodo, removeTodo})(TodoList)
+export default connect(mapStateToProps, {getTodos, addTodo, removeTodo})(TodoList)
