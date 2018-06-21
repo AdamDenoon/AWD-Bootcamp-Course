@@ -6,3 +6,4 @@ mongoose.connect("mongodb://mongo/db", {
 })
 
 module.exports.User = require("./user")
+module.exports.Message = require("./message")
