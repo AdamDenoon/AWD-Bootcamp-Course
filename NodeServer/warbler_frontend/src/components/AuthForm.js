@@ -11,8 +11,12 @@ class AuthForm extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault()
+    const authType = this.props.signUp ? "signup" : "signin"
+    this.props.onAuth(authType, this.state).then(() => {
+      console.log("Logged in!")
+    })
   }
 
   handleChange = e => {
@@ -69,6 +73,7 @@ class AuthForm extends Component {
             </div>
           )
         }
+        <button className="btn btn-primary btn-block btn-lg" type="submit">{buttonText}</button>
         </form>
       </div>
     )
