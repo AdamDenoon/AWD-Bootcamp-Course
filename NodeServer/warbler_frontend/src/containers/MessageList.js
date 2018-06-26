@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { fetchMessages } from "../store/actions/messages"
+import { fetchMessages, removeMessage } from "../store/actions/messages"
 import MessageItem from "../components/MessageItem"
 
 class MessageList extends Component {
@@ -8,7 +8,7 @@ class MessageList extends Component {
     this.props.fetchMessages()
   }
   render() {
-    const { messages } = this.props
+    const { messages, removeMessage, errors, currentUserId } = this.props
     let messageList = messages.map(m => (
       <MessageItem
         key={m._id}
@@ -16,11 +16,14 @@ class MessageList extends Component {
         text={m.text}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
+        removeMessage={removeMessage.bind(this,m.user._id,m._id)}
+        isCorrectUser={currentUserId === m.user._id}
       />
     ))
     return (
       <div className="row col-sm-8">
         <div className="offset-1 col-sm-10">
+          {errors.message && <div className="alert alert-danger">{errors.message}</div>}
           <ul className="list-group" id="messages">
             { messageList }
           </ul>
@@ -33,8 +36,9 @@ class MessageList extends Component {
 
 function mapStateToProps(state) {
   return {
+    currentUserId: state.currentUser.user.id,
     messages: state.messages
   }
 }
 
-export default connect(mapStateToProps, { fetchMessages })(MessageList)
+export default connect(mapStateToProps, { fetchMessages, removeMessage })(MessageList)

@@ -4,6 +4,7 @@ nav {
   display: flex;
   justify-content: space-between;
   background: #03A9F4;
+  margin-bottom: 15px;
 }
 nav .brand a {
   display: flex;
