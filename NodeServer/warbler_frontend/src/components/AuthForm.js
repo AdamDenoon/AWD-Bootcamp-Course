@@ -58,6 +58,7 @@ class AuthForm extends Component {
             id="password"
             name="password"
             onChange={this.handleChange}
+            value={password}
           />
           { signUp && (
             <div>

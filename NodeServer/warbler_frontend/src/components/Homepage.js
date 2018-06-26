@@ -15,7 +15,7 @@ const Homepage = ({ currentUser }) => {
     )
   }
   return (
-    <div>
+    <div className="container">
       <MessageTimeline />
     </div>
   )
